@@ -46,6 +46,11 @@ export class ProductComponent implements OnInit {
       });
   }
   addToCart(product: Product) {
+    if (product.productId===1) {
+    this.toastrService.error("Hata var");
+    }
+    else {
     this.toastrService.success("Sepete eklendi",product.productName);
+    }
   }
 }
