@@ -7,8 +7,8 @@ import { CartItem } from 'src/app/models/cartitem';
   styleUrls: ['./cart-summary.component.css'],
 })
 export class CartSummaryComponent implements OnInit {
-  cartItems: CartItem[] ;
-  constructor() {}
+  cartItems: CartItem[];
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }
