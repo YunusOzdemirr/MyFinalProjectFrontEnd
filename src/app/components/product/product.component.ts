@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/models/product';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
 
 //Reactta axios,fetch kullanılıyor
@@ -18,8 +19,9 @@ export class ProductComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
-    private toastrService: ToastrService
-  ) {}
+    private toastrService: ToastrService,
+    private cartService: CartService
+  ) { }
   //ActivatedRoute dışarıdan gelen bir parametreyi almak için kullanılıyor.
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
@@ -46,11 +48,16 @@ export class ProductComponent implements OnInit {
       });
   }
   addToCart(product: Product) {
-    if (product.productId===1) {
-    this.toastrService.error("Hata var");
+    if (product.productId === 1) {
+      this.toastrService.error("Hata var");
     }
     else {
-    this.toastrService.success("Sepete eklendi",product.productName);
+      this.toastrService.success("Sepete eklendi", product.productName);
+      //Karta ekleme işlemi
+      this.cartService.addToCart(product);
     }
   }
+
+
+
 }

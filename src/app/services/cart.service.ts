@@ -9,7 +9,7 @@ import { Product } from '../models/product';
 export class CartService {
 
   constructor() { }
-  addToCar(product: Product) {
+  addToCart(product: Product) {
     let item = CartItems.find(c => c.product.productId === product.productId);
     if (item) {
       item.quantity += 1;
@@ -19,5 +19,8 @@ export class CartService {
       cartItem.quantity = 1;
       CartItems.push(cartItem);
     }
+  }
+  list(): CartItem[] {
+    return CartItems;
   }
 }
