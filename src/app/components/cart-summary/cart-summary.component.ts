@@ -12,7 +12,6 @@ import { CartService } from 'src/app/services/cart.service';
 export class CartSummaryComponent implements OnInit {
   cartItems: CartItem[] = [];
   constructor(private cartService: CartService, private toastrService: ToastrService) {
-
   }
 
   ngOnInit(): void {
